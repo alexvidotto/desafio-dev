@@ -9,11 +9,11 @@ const
   ,util         = require('util')
   ,urlSigner    = require('../security/urlsigner');
 
-module.exports = (function() {
+module.exports = function(applicationCode, secretToken) {
 
   let
-    appCode    = process.env.MAPLINK_APP_CODE
-    ,secretKey = process.env.MAPLINK_SECRET_KEY;
+    appCode    = applicationCode || process.env.MAPLINK_APP_CODE
+    ,secretKey = secretToken     || process.env.MAPLINK_SECRET_KEY;
 
   function execute (operation, url, json) {
     return new Promise(function (resolve, reject) {
@@ -69,5 +69,4 @@ module.exports = (function() {
       }, url, json);
     }
   }
-
-})();
+};

@@ -7,19 +7,22 @@
 const
   wagner                   = require('wagner-core')
 
-  ,mapLinkRouteAPI         = require('../core/api/maplink/route')
-  ,mapLinkGeocodeAPI       = require('../core/api/maplink/geocode')
+  ,mapLinkFactory          = require('../core/api/maplink/factory')
+  ,MapLinkRouteAPI         = require('../core/api/maplink/route')
+  ,MapLinkGeocodeAPI       = require('../core/api/maplink/geocode')
   ,winstonLog              = require('../core/logger/winston')
 ;
 
 module.exports = {
   register: function() {
 
+    mapLinkFactory.register();
+
     wagner.factory('routeAPI', function() {
-      return mapLinkRouteAPI;
+      return new MapLinkRouteAPI();
     });
     wagner.factory('geocodeAPI', function() {
-      return mapLinkGeocodeAPI;
+      return new MapLinkGeocodeAPI();
     });
     wagner.factory('serviceAPI', function (geocodeAPI, routeAPI) {
       return {

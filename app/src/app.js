@@ -1,5 +1,5 @@
 const
-  env          = require('node-env-file')(__dirname + '/.env')
+  env           = require('node-env-file')(__dirname + '/.env')
   ,factory      = require('./modules/factory');
 
 factory.register();

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "NODE_ENV=test NODE_PATH=./node_modules gulp --harmony test"
   },
   "dependencies": {
     "body-parser": "~1.16.0",
@@ -15,5 +16,17 @@
     "request": "^2.81.0",
     "wagner-core": "^0.2.0",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^4.3.0",
+    "gulp-notify": "^3.0.0",
+    "node-env-file": "^0.1.8",
+    "gulp-plumber": "^1.1.0",
+    "mocha": "^3.2.0",
+    "nock": "^9.0.13"
   }
 }

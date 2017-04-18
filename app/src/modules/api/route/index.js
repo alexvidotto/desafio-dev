@@ -20,7 +20,11 @@ module.exports = (function () {
         return geocoder
                 .geocode(parameters.addresses)
                 .then(util.extractWaypoints)
-                .then(serviceAPI.route.calculate)
+                .then(function (waypoints) {
+                  // restrict summary result
+                  let query = waypoints + '&result=summary.tolls,summary.distance,summary.duration';
+                  return serviceAPI.route.calculate(query);
+                })
                 .then(summarizer.summarize);
       }
     };

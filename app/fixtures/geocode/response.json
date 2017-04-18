@@ -1,0 +1,19 @@
+{
+	"results": [{
+		"type": "geography",
+		"matchingScore": 2.25,
+		"country": {
+			"countryCode": "BR"
+		},
+		"countrySubdivisionAbbreviation": "BA",
+		"countrySubdivision": "Bahia",
+		"city": "Vitória da Conquista",
+		"citySubdivision": "Brasil",
+		"displayName": "Brasil, Vitória da Conquista - BA",
+		"location": {
+			"lat": -14.85729,
+			"lng": -40.85457
+		}
+	}],
+	"status": "OK"
+}
