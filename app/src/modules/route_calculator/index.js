@@ -28,7 +28,7 @@ module.exports = (function () {
         if (Object.prototype.toString.call(address) === '[object Array]') {
           let tasks = [];
           for (let i = 0; i < address.length; i++) {
-            tasks.push(address[i]);
+            tasks.push( serviceAPI.geocode.geocode('q=' + address[i]) );
           }
           return Promise.all(tasks);
         } else {

@@ -5,29 +5,23 @@ const
   router           = express.Router(),
   service          = require('../../modules/route_calculator'),
   response         = require('../../modules/core/response'),
+  url              = require('url'),
 
   CALC_ROUTE  = '/route/calculate',
-  GEOCODE     = '/address/geocode',
-  GEOCODEALL  = '/address/geocodeall'
+  GEOCODE     = '/address/geocode'
 ;
-
-router.post(CALC_ROUTE, function (req, res) {
-  response.respond(res, function () {
-    return service.calc({'nome': 'alex'});
-  });
-});
 
 router.get(GEOCODE, function (req, res) {
   response.respond(res, function () {
-    let query = req.query.q;
+    let query = url.parse(req.originalUrl).query;
     return service.geocode(query);
   });
 });
 
-router.post(GEOCODEALL, function (req, res) {
+router.post(CALC_ROUTE, function (req, res) {
   response.respond(res, function () {
-    let addresses = req.body.addresses;
-    return service.geocode(addresses);
+    let parameters = req.body;
+    return service.geocode(parameters.addresses);
   });
 });
 

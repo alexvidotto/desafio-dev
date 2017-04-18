@@ -5,12 +5,12 @@ const
   request = require('../request');
 
 let
-  baseURL = 'http://api.maplink.com.br/v0/search?q=%s'
+  baseURL = 'http://api.maplink.com.br/v0/search?%s'
 
-module.exports.geocode = function (address) {
+module.exports.geocode = function (query) {
   return Promise.resolve().then(function () {
 
-    let searchURL = util.format(baseURL, address);
+    let searchURL = util.format(baseURL, query);
     return request.get(searchURL);
   });
 }
