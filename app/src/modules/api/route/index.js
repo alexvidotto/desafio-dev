@@ -3,7 +3,9 @@
 const
    wagner        = require('wagner-core')
    ,geocoder     = require('../geocode')
-   ,Summarizer   = require('./Summarizer');
+   ,Summarizer   = require('./Summarizer')
+   ,util         = require('./util')
+ ;
 
 module.exports = (function () {
 
@@ -17,7 +19,7 @@ module.exports = (function () {
 
         return geocoder
                 .geocode(parameters.addresses)
-                .then(summarizer.extractWaypoints)
+                .then(util.extractWaypoints)
                 .then(serviceAPI.route.calculate)
                 .then(summarizer.summarize);
       }

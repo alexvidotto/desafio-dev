@@ -41,23 +41,6 @@ module.exports = function (parameters) {
     self.routeInfo.settings  = self.defaultParameters;
   };
 
-  self.extractWaypoints = function (geocodeResult) {
-    let waypoints = [];
-    for (let i = 0, result; result = geocodeResult[i]; i++) {
-      if (!result.results.length) {
-        throw Error("Some address was not found");
-      }
-      let adrs = result.results[0];
-      result.results
-      waypoints.push(self.stringifyWaypoint(adrs.location, i));
-    }
-    return waypoints.join('&');
-  };
-
-  self.stringifyWaypoint = function (location, index) {
-    return util.format("waypoint.%s.latlng=%s,%s", index, location.lat, location.lng);
-  };
-
   self.summarize = function (routes) {
     self.collectRouteInfo(routes);
     return self.routeInfo;
