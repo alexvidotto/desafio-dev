@@ -1,5 +1,6 @@
 const
- factory = require('./modules/factory');
+  env          = require('node-env-file')(__dirname + '/.env'),
+  factory      = require('./modules/factory');
 
 factory.register();
 
@@ -10,6 +11,7 @@ const
   router       = require('./router'),
   logger       = require('./modules/logger/'),
   response     = require('./modules/core/response'),
+
   app          = express()
 ;
 

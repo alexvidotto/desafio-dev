@@ -26,7 +26,6 @@ module.exports = {
         'route'  : routeAPI
       }
     })
-
     wagner.factory('logger', function() {
       return winstonLog;
     });
