@@ -11,8 +11,8 @@ module.exports = (function (){
   return wagner.invoke(function (logger) {
 
     let
-      logErrors = process.env.LOG_REQ_ERRORS || true,
-      logAll    = process.env.LOG_REQ_ALL    || false;
+      logErrors = !!process.env.LOG_REQ_ERRORS ? 'true' == process.env.LOG_REQ_ERRORS : true,
+      logAll    = !!process.env.LOG_REQ_ALL    ? 'true' == process.env.LOG_REQ_ALL    : false;
 
     function respond(res, promiseChain) {
       Promise.resolve().then(function (){
