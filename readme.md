@@ -1,4 +1,4 @@
-Desafio Desenvolvedor - Concluido
+Desafio Desenvolvedor - Concluído
 ======================================
 
 Para rodar a aplicação
