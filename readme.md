@@ -1,4 +1,4 @@
-Desafio Desenvolvedor - Resolvido
+Desafio Desenvolvedor - Concluido
 ======================================
 
 Para rodar a aplicação
@@ -76,11 +76,7 @@ APIs da aplicação
 
 #### /modules/*
 
-O backend da aplicação está separado em módulos. E.g. as APIs expostas fazem uso dos seus respectivos módulos em /modules/api/*. que por sua vez, _são dependentes de módulos injetados (DI) do /modules/core/api_ da aplicação.
-
-#### DI
-
-Note a implementação nos módulos */factory/.
+O backend da aplicação está separado em módulos. E.g. as APIs expostas fazem uso dos seus respectivos módulos em /modules/api/*. que por sua vez, _são dependentes de módulos injetados (DI) do /modules/core/api_ da aplicação. Toda injeção de dependencia é feita nos módulos */factory/, note.
 
 #### API design
 
@@ -88,9 +84,14 @@ As respostas das APIS estão normalizadas nos seguintes status:
 
 ```json
 {
-  "code": 200|500,
-  "status": "OK"|"ERROR"
+  "code": 200,
+  "status": "OK",
   "result": []
+}
+
+{
+  "code": 500,
+  "status": "ERROR"
 }
 ```
 
