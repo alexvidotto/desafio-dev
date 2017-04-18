@@ -5,11 +5,12 @@
 'use strict';
 
 const
-  wagner                  = require('wagner-core'),
+  wagner                   = require('wagner-core')
 
-  mapLinkRouteAPI         = require('../core/api/maplink/route'),
-  mapLinkGeocodeAPI       = require('../core/api/maplink/geocode'),
-  winstonLog              = require('../core/logger/winston');
+  ,mapLinkRouteAPI         = require('../core/api/maplink/route')
+  ,mapLinkGeocodeAPI       = require('../core/api/maplink/geocode')
+  ,winstonLog              = require('../core/logger/winston')
+;
 
 module.exports = {
   register: function() {
@@ -22,8 +23,8 @@ module.exports = {
     });
     wagner.factory('serviceAPI', function (geocodeAPI, routeAPI) {
       return {
-        'geocode': geocodeAPI,
-        'route'  : routeAPI
+        'geocoder': geocodeAPI,
+        'route'   : routeAPI
       }
     })
     wagner.factory('logger', function() {

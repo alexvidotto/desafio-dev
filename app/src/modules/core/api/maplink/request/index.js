@@ -5,21 +5,21 @@
 'use strict';
 
 const
-  request      = require('request'),
-  urlSigner    = require('../security/urlsigner'),
-  util         = require('util');
+  request       = require('request')
+  ,util         = require('util')
+  ,urlSigner    = require('../security/urlsigner');
 
 module.exports = (function() {
 
   let
-    appCode   = process.env.MAPLINK_APP_CODE,
-    secretKey = process.env.MAPLINK_SECRET_KEY;
+    appCode    = process.env.MAPLINK_APP_CODE
+    ,secretKey = process.env.MAPLINK_SECRET_KEY;
 
   function execute (operation, url, json) {
     return new Promise(function (resolve, reject) {
 
       if (!appCode || !secretKey) {
-        reject('required env var was not found');
+        reject('required env vars was not found');
         return;
       }
 
@@ -35,12 +35,21 @@ module.exports = (function() {
           responseContent.push(data.toString());
         })
         .on('end', function() {
-          responseContent = responseContent.join('');
-          let jsonResult = JSON.parse(responseContent);
-          if (jsonResult['status'] !== 'OK') {
-            reject(Error(responseContent));
-          } else {
-            resolve(jsonResult);
+          try {
+            responseContent = responseContent.join('');
+            let jsonResult = JSON.parse(responseContent);
+            if ('status' in jsonResult) {
+              let status = jsonResult['status'];
+              if (status.code && status.code !== 'OK' || !status.code && status !== 'OK') {
+                throw Error(responseContent);
+              } else {
+                resolve(jsonResult);
+              }
+            } else {
+              throw Error(responseContent);
+            }
+          } catch (e) {
+            reject(e);
           }
         });
       });
@@ -52,9 +61,9 @@ module.exports = (function() {
       return execute(function(url, qs) {
         return request({ url:url, qs: qs});
       }, url, json);
-    },
+    }
 
-    post: function (url, json) {
+    ,post: function (url, json) {
       return execute(function(url, json) {
         return request.post({ url: url, form: json});
       }, url, json);

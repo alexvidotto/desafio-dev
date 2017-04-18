@@ -1,8 +1,8 @@
 // Native nodejs helper for parsing url
 const
-  url     = require('url'),
-  crypto  = require('crypto'),
-  util    = require('util');
+  url      = require('url')
+  ,crypto  = require('crypto')
+  ,util    = require('util');
 
 function getSignature( completeUrl, key, body ) {
 

@@ -1,29 +1,29 @@
 'use strict';
 
 const
-  winston     = require('winston'),
-  fs          = require('fs'),
-  _           = require('lodash');
+  winston      = require('winston')
+  ,fs          = require('fs')
+  ,_           = require('lodash');
 
 exports.initialize = function (app, parameters) {
 
   let
-    params = parameters || {},
-    configuration = {
+    params = parameters || {}
+    ,configuration = {
       transportConsoleParams: {
-        level           : 'debug',
-        handleExceptions: false,
-        json            : false,
-        colorize        : true
-      },
-      transportFileParams: {
-        level           : 'error',
-        handleExceptions: true,
-        timestamp       : true,
-        json            : true,
-        maxsize         : 5242880, //5MB
-        maxFiles        : 10,
-        colorize        : true
+        level           : 'debug'
+        ,handleExceptions: false
+        ,json            : false
+        ,colorize        : true
+      }
+      ,transportFileParams: {
+        level           : 'error'
+        ,handleExceptions: true
+        ,timestamp       : true
+        ,json            : true
+        ,maxsize         : 5242880 //5MB
+        ,maxFiles        : 10
+        ,colorize        : true
       }
     };
 
